@@ -1,21 +1,23 @@
-import Link from "next/link";
+import type { Metadata } from "next";
 
-export default function About() {
+export const metadata: Metadata = {
+  title: "About",
+  description: "A brief note about Scott Phillips.",
+};
+
+export default function AboutPage() {
   return (
-    <div className="mx-auto flex min-h-full w-full max-w-2xl flex-col px-6 py-10">
-      <nav aria-label="Primary" className="mb-16 flex items-center gap-6 text-sm text-neutral-500">
-        <Link href="/" className="hover:text-neutral-800">
-          Home
-        </Link>
-        <Link href="/about" className="text-neutral-900">
-          About
-        </Link>
-        <Link href="/writing" className="hover:text-neutral-800">
-          Writing
-        </Link>
-      </nav>
-      <h1 className="text-2xl font-normal tracking-tight text-neutral-900">About</h1>
-      <p className="mt-4 text-neutral-500">Coming soon.</p>
-    </div>
+    <article className="prose-measure">
+      <h1 className="text-2xl font-normal">About</h1>
+      <div className="mt-8 space-y-5 leading-relaxed">
+        <p>
+          Scott Phillips writes here when there is something worth putting into
+          words.
+        </p>
+        <p className="text-[var(--muted)]">
+          More soon — this page is a placeholder until a fuller note belongs.
+        </p>
+      </div>
+    </article>
   );
 }

@@ -1,19 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
+import { SiteFooter } from "./components/SiteFooter";
+import { SiteHeader } from "./components/SiteHeader";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Aeiy",
+  title: {
+    default: "Scott Phillips",
+    template: "%s · Scott Phillips",
+  },
   description: "where ideas can hang out and do whatever",
 };
 
@@ -25,9 +32,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${sourceSerif.variable} ${sourceSans.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="site-shell antialiased">
+        <SiteHeader />
+        <main className="site-frame flex-1 py-16">{children}</main>
+        <SiteFooter />
+      </body>
     </html>
   );
 }
